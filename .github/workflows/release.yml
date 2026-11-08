@@ -62,4 +62,4 @@ jobs:
         run: |
           ver="${GITHUB_REF_NAME#v}"
           awk -v ver="$ver" '/^## /{ if (on) exit; on = ($2 == ver); next } on' CHANGELOG.md > notes.md
-          gh release create "$GITHUB_REF_NAME" dist/* --title "gmap $ver" --notes-file notes.md
+          gh release create "$GITHUB_REF_NAME" dist/*.tar.gz dist/*.zip dist/*.sha256 --title "gmap $ver" --notes-file notes.md
