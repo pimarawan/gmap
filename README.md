@@ -1,95 +1,106 @@
 # gmap
 
-Git activity maps you can use: heatmaps, churn, exports, and a no‑nonsense TUI.
+Git history knows things the code doesn't say: which files keep breaking,
+which files secretly depend on each other, and which code only one person
+understands. gmap reads the history and shows you.
 
-No dashboards. No hype. Just answers to: what changed, when, and by whom.
+![gmap on tokio](doc/map.svg)
 
-## Install
+    cargo install gmap
 
-```sh
-cargo install gmap
-```
+    gmap                      the map
+    gmap hotspots             files to worry about first
+    gmap coupling --across    files that change together, in different folders
+    gmap owners               who knows the code; the truck factor
+    gmap activity             when commits happen
 
-Requires a Git repo. Data is read locally; nothing leaves your machine.
+Every command takes `--since 6m`, `--author name`, a path to narrow to, and
+`--json`.
 
-## Quick start
+## The map
 
-- TUI heatmap for the current repo
-  ```sh
-  gmap heat --tui
-  ```
+Every source file is a rectangle. Area is lines of code. Color is how much it
+changed lately: dark is quiet, yellow is where the work is. Folders open in
+place, so you see the shape of the whole project at once. Arrows move, enter
+goes into a folder, backspace comes out. The panel on the right says what the
+selected file or folder is, who knows it and what it changes with. `?` lists
+the keys.
 
-- JSON heatmap, monthly buckets, filter by author
-  ```sh
-  gmap --repo /path/to/repo heat --json --monthly --author "alice"
-  ```
+## Hotspots
 
-- Top churn (aggregate file changes)
-  ```sh
-  gmap churn --json --since 3 months ago
-  ```
+A file that is complicated and changes all the time is where bugs collect
+(Tornhill, _Your Code as a Crime Scene_).
 
-- Full export (per‑commit, per‑file), newline‑delimited
-  ```sh
-  gmap export --ndjson
-  ```
+    score = Σ over changes of 2^(-age / half-life)  ×  ln(1 + complexity)
 
-## Flags you’ll actually use
+Complexity is indentation: leading whitespace in steps of four, summed over
+lines. It needs no parser, works for any language, and tracks real complexity
+metrics closely. The half-life is a year by default (`--half-life`), so a file
+that was busy in 2017 and quiet since is not a hotspot now.
 
-- Global
-  - `--repo <path>`: analyze this repo (default: `.`)
-  - `--cache <dir>`: where to place/read the `.db` cache
-  - `--since/--until <date>`: time bounds (supports `YYYY-MM-DD`, RFC3339, `X days/weeks/months ago`, `yesterday`, `today`, `now`, `last week`, `last month`, or any Git ref)
-  - `--include-merges`: count merge commits (off by default)
-  - `--author <text>` / `--author-email <text>`: substring match, case‑insensitive
+![hotspots in tokio](doc/hotspots.svg)
 
-- Heat
-  - `--json` / `--ndjson`
-  - `--monthly`: group by month instead of week
+## Coupling
 
-- Churn
-  - `--json` / `--ndjson`
-  - `--depth <n>`: aggregate by directory depth
+Two files that keep changing in the same commits depend on each other,
+whether the code says so or not. Within a folder that's usually expected.
+Across folders (`--across`) it's usually copy-paste: in tokio,
+`net/tcp/split_owned.rs` and `net/unix/split_owned.rs` change together 70% of
+the time.
 
-- Export
-  - `--json` / `--ndjson`
+Plenty of pairs overlap by chance, so each pair is tested. If two files
+changed `a` and `b` times in `N` commits independently, their overlap follows
+a hypergeometric distribution. A pair is shown only when its overlap would
+happen by chance less than 1 time in 20 across all pairs tested (Bonferroni).
+Commits touching more than 30 files and files created in the same commit
+don't count.
 
-## TUI
+## Owners
 
-- Tabs: Heatmap • Stats • Files • Timeline • Commits
-- Keys
-  - `Tab` / `Shift+Tab`: switch views
-  - `←/→` or `j/k`: move selection
-  - `/`: search weeks/authors (filter)
-  - `Enter`: open commit list for selected period
-  - `c`: copy commit hash
-  - `h` or `F1`: help; `q`: quit
+Who knows a file is estimated by degree of authorship (Fritz et al. 2014),
+with the weights Avelino et al. fitted on 120 GitHub projects:
 
-Tip: The Files view shows file‑type breakdowns for the selected period and overall, so you can spot what kinds of files are being touched.
+    DOA = 3.293 + 1.098·created + 0.164·your commits − 0.321·ln(1 + others' commits)
 
-## What gmap gives you
+The truck factor is how many top owners can leave before more than half the
+files have nobody left who knows them (Avelino et al. 2016). ripgrep's is 1,
+tokio's is 6. gmap also lists files whose owners have all stopped committing.
 
-- A timeline of change: commits and line deltas by week/month
-- Churn hotspots: where change concentrates (by file or directory)
-- Contributors and patterns: filter by author/email to slice activity
-- Portable data: JSON/NDJSON outputs for your own scripts
+## What it skips
 
-What it’s not: a general Git UI, blame replacement, or a web app.
+- Anything that isn't source code. `--all` keeps docs, config and data.
+- Lockfiles, `vendor/`, `node_modules/`, minified and generated files, and
+  whatever `.gitattributes` marks `linguist-generated`, `linguist-vendored`,
+  `-diff` or `binary`. `--exclude` adds more.
+- Bots (dependabot, renovate, `[bot]`). `--bots` counts them.
+- Merge commits, whose changes are already in the commits they merge.
+- Commits in `.git-blame-ignore-revs`: mass reformatting says nothing.
 
-## Performance notes
+Renames are followed, so a file keeps its history under its current name.
+`.mailmap` is read, and one full name with several emails is one person.
+Ages count back from the newest commit, not from today, so a finished project
+still has a recent past.
 
-- Uses a local SQLite cache under `.gmap/` to avoid recomputing diffs
-- Line diffs use a robust algorithm; binary files are ignored unless `--binary`
-- Merge commits are excluded by default to reduce noise
+## Speed
 
-## Testing
+Every commit is diffed against its parent on all cores. Results are cached in
+`.git/gmap/cache`, so the next run only reads new commits. Fastest of three
+runs, Ryzen 5 5600G, Windows 11:
 
-- `cargo test` runs CLI smoke tests that spawn temporary git repos. On Windows, set `git config --global core.autocrlf false` (or `input`) to avoid CRLF churn blocking branch checkouts. The tests hard-reset their temp repos between branch switches to keep worktrees clean.
+| repository | commits | gmap 0.5 | cached | `git log --numstat` |           gmap 0.4 |
+| ---------- | ------: | -------: | -----: | ------------------: | -----------------: |
+| ripgrep    |   2,303 |   0.44 s | 0.18 s |              0.85 s |              2.1 s |
+| tokio      |   4,873 |   0.88 s | 0.21 s |               2.5 s |              5.2 s |
+| git        |  82,725 |    7.3 s | 0.91 s |                34 s | crashed after 53 s |
 
-## Contributing
+Line counts match `git log --numstat --diff-algorithm=histogram`; there is a
+test for it.
 
-Bug reports, ideas, and small PRs welcome. Keep changes focused. If you add a feature, add a flag and a short example to this README.
+## Build
+
+    cargo build --release
+    cargo test
 
 ## License
 
-MIT. See `LICENSE`.
+MIT

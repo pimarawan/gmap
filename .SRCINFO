@@ -1,15 +1,14 @@
 pkgbase = gmap
-	pkgdesc = Git repository analysis tool for churn and heatmap visualization
-pkgver = 0.4.0
+	pkgdesc = Find the risky parts of a git repository: hotspots, hidden coupling and the truck factor
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://github.com/seeyebe/gmap
-arch = x86_64
-arch = aarch64
+	url = https://github.com/pimarawan/gmap
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	makedepends = git
-source = gmap-0.4.0.tar.gz::https://github.com/seeyebe/gmap/archive/refs/tags/0.4.0.tar.gz
-sha256sums = SKIP
+	source = gmap-0.5.0.tar.gz::https://github.com/pimarawan/gmap/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = gmap

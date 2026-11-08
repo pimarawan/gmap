@@ -1,18 +1,23 @@
 pkgname=gmap
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Git repository analysis tool for churn and heatmap visualization"
+pkgdesc="Find the risky parts of a git repository: hotspots, hidden coupling and the truck factor"
 arch=('x86_64' 'aarch64')
-url="https://github.com/seeyebe/gmap"
+url="https://github.com/pimarawan/gmap"
 license=('MIT')
 depends=()
-makedepends=('rust' 'cargo' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/seeyebe/gmap/archive/refs/tags/$pkgver.tar.gz")
+makedepends=('rust' 'cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pimarawan/gmap/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release --locked
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  cargo test --release --locked
 }
 
 package() {

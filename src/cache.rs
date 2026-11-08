@@ -1,256 +1,248 @@
-use crate::error::{GmapError, Result};
-use crate::model::{CommitInfo, CommitStats, DateRange, FileStats, SCHEMA_VERSION};
-use chrono::{TimeZone, Utc};
-use rusqlite::{params, Connection, ToSql};
-use std::collections::{HashMap, HashSet};
+use gix::ObjectId;
+use std::collections::HashMap;
+use std::io::Write;
 use std::path::Path;
 
-pub struct Cache {
-    conn: Connection,
+/// `.git/gmap/cache`: a string table, then one record per commit, little-endian.
+/// A file that fails to parse is ignored and rebuilt, so bump this to change the format.
+const MAGIC: &[u8; 8] = b"gmap\x00\x00\x00\x02";
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Kind {
+    Add,
+    Delete,
+    Modify,
+    Rename,
 }
 
-impl Cache {
-    pub fn new<CP: AsRef<Path>, RP: AsRef<Path>>(
-        cache_path: Option<CP>,
-        repo_path: RP,
-    ) -> Result<Self> {
-        let cache_dir = match cache_path {
-            Some(path) => path.as_ref().to_path_buf(),
-            None => repo_path.as_ref().join(".gmap"),
-        };
-        std::fs::create_dir_all(&cache_dir)?;
-        let db_path = cache_dir.join("cache.db");
-        let conn = Connection::open(&db_path)?;
-        let mut cache = Self { conn };
-        cache.initialize()?;
-        Ok(cache)
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct RawChange {
+    pub kind: Kind,
+    pub path: String,
+    /// The path before a rename.
+    pub old: Option<String>,
+    pub added: u32,
+    pub deleted: u32,
+    pub binary: bool,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct RawCommit {
+    pub time: i64,
+    /// The author's UTC offset in seconds.
+    pub tz: i32,
+    pub name: String,
+    pub email: String,
+    pub summary: String,
+    /// The parent could not be read (a shallow clone), so `changes` is empty.
+    pub partial: bool,
+    pub changes: Vec<RawChange>,
+}
+
+pub type Cache = HashMap<ObjectId, RawCommit>;
+
+pub fn load(path: &Path) -> Cache {
+    std::fs::read(path).ok().and_then(|b| decode(&b)).unwrap_or_default()
+}
+
+pub fn save(path: &Path, cache: &Cache) -> std::io::Result<()> {
+    if let Some(dir) = path.parent() {
+        std::fs::create_dir_all(dir)?;
     }
+    let tmp = path.with_extension("tmp");
+    let mut f = std::io::BufWriter::new(std::fs::File::create(&tmp)?);
+    f.write_all(&encode(cache))?;
+    f.into_inner().map_err(|e| e.into_error())?.sync_all()?;
+    std::fs::rename(&tmp, path)
+}
 
-    fn initialize(&mut self) -> Result<()> {
-        self.conn.execute_batch(
-            "
-            CREATE TABLE IF NOT EXISTS commits (
-                id TEXT PRIMARY KEY,
-                author_name TEXT NOT NULL,
-                author_email TEXT NOT NULL,
-                message TEXT NOT NULL,
-                timestamp INTEGER NOT NULL,
-                parent_ids TEXT NOT NULL
-            );
-            CREATE TABLE IF NOT EXISTS files (
-                commit_id TEXT NOT NULL,
-                path TEXT NOT NULL,
-                added_lines INTEGER NOT NULL,
-                deleted_lines INTEGER NOT NULL,
-                is_binary INTEGER NOT NULL,
-                PRIMARY KEY (commit_id, path),
-                FOREIGN KEY (commit_id) REFERENCES commits(id)
-            );
-            CREATE INDEX IF NOT EXISTS idx_commits_timestamp ON commits(timestamp);
-            CREATE INDEX IF NOT EXISTS idx_files_path ON files(path);
-            ",
-        )?;
-        self.check_schema_version()?;
-        Ok(())
-    }
-
-    fn check_schema_version(&mut self) -> Result<()> {
-        let user_version: i64 = self
-            .conn
-            .query_row("PRAGMA user_version;", [], |row| row.get(0))?;
-
-        if user_version == 0 {
-            let set_stmt = format!("PRAGMA user_version = {SCHEMA_VERSION};");
-            self.conn.execute_batch(&set_stmt)?;
-        } else if user_version != SCHEMA_VERSION as i64 {
-            return Err(GmapError::Cache(format!(
-                "Schema version mismatch: expected {SCHEMA_VERSION}, found {user_version}"
-            )));
-        }
-
-        Ok(())
-    }
-
-    pub fn get_commit_stats(&self, range: &DateRange) -> Result<Vec<CommitStats>> {
-        let mut query = String::from(
-            "SELECT c.id, c.timestamp, f.path, f.added_lines, f.deleted_lines, f.is_binary
-             FROM commits c
-             LEFT JOIN files f ON c.id = f.commit_id
-             WHERE 1=1",
-        );
-        let mut to_bind: Vec<Box<dyn ToSql>> = Vec::new();
-
-        if let Some(since) = &range.since {
-            query.push_str(" AND c.timestamp >= ?");
-            to_bind.push(Box::new(since.timestamp()));
-        }
-        if let Some(until) = &range.until {
-            query.push_str(" AND c.timestamp <= ?");
-            to_bind.push(Box::new(until.timestamp()));
-        }
-        query.push_str(" ORDER BY c.timestamp");
-
-        let mut stmt = self.conn.prepare(&query)?;
-        let bind_refs: Vec<&dyn ToSql> = to_bind.iter().map(|b| b.as_ref()).collect();
-        let rows = stmt.query_map(bind_refs.as_slice(), |row| {
-            let commit_id: String = row.get(0)?;
-            let ts: i64 = row.get(1)?;
-            let path_opt: Option<String> = row.get(2)?;
-            let added_opt: Option<u32> = row.get(3)?;
-            let deleted_opt: Option<u32> = row.get(4)?;
-            let is_binary_opt: Option<i64> = row.get(5)?;
-            let mut files = Vec::new();
-            if let (Some(path), Some(added), Some(deleted), Some(is_binary_int)) =
-                (path_opt, added_opt, deleted_opt, is_binary_opt)
-            {
-                let is_binary = is_binary_int != 0;
-                files.push(FileStats {
-                    path,
-                    added_lines: added,
-                    deleted_lines: deleted,
-                    is_binary,
-                });
-            }
-            Ok((commit_id, ts, files))
-        })?;
-
-        let mut commits_map: HashMap<String, (i64, Vec<FileStats>)> = HashMap::new();
-        for row in rows {
-            let (commit_id, ts, mut files) = row?;
-            let entry = commits_map.entry(commit_id).or_insert((ts, Vec::new()));
-            // keep the earliest timestamp seen for determinism (should be identical per commit)
-            if ts < entry.0 {
-                entry.0 = ts;
-            }
-            entry.1.append(&mut files);
-        }
-
-        let mut items: Vec<(String, i64, Vec<FileStats>)> = commits_map
+fn encode(cache: &Cache) -> Vec<u8> {
+    let mut strings: HashMap<&str, u32> = HashMap::new();
+    let mut table: Vec<&str> = Vec::new();
+    for c in cache.values() {
+        for s in [c.name.as_str(), c.email.as_str()]
             .into_iter()
-            .map(|(id, (ts, files))| (id, ts, files))
-            .collect();
-        items.sort_by(|a, b| a.1.cmp(&b.1));
-
-        Ok(items
-            .into_iter()
-            .map(|(commit_id, _ts, files)| CommitStats { commit_id, files })
-            .collect())
-    }
-
-    pub fn store_commit_stats(
-        &mut self,
-        commits: &[CommitStats],
-        infos: &HashMap<String, CommitInfo>,
-    ) -> Result<()> {
-        let tx = self.conn.transaction()?;
-
-        let mut insert_commit_stmt = tx.prepare(
-            "INSERT OR REPLACE INTO commits (id, author_name, author_email, message, timestamp, parent_ids)
-             VALUES (?, ?, ?, ?, ?, ?)",
-        )?;
-        let mut delete_files_stmt = tx.prepare("DELETE FROM files WHERE commit_id = ?")?;
-        let mut insert_file_stmt = tx.prepare(
-            "INSERT INTO files (commit_id, path, added_lines, deleted_lines, is_binary)
-             VALUES (?, ?, ?, ?, ?)",
-        )?;
-
-        for stats in commits {
-            if let Some(info) = infos.get(&stats.commit_id) {
-                insert_commit_stmt.execute(params![
-                    info.id,
-                    info.author_name,
-                    info.author_email,
-                    info.message,
-                    info.timestamp.timestamp(),
-                    serde_json::to_string(&info.parent_ids)?
-                ])?;
-
-                delete_files_stmt.execute(params![stats.commit_id])?;
-
-                let mut seen_paths: HashSet<&String> = HashSet::new();
-                for f in &stats.files {
-                    if seen_paths.insert(&f.path) {
-                        insert_file_stmt.execute(params![
-                            stats.commit_id,
-                            f.path,
-                            f.added_lines,
-                            f.deleted_lines,
-                            if f.is_binary { 1 } else { 0 }
-                        ])?;
-                    }
-                }
+            .chain(c.changes.iter().flat_map(|ch| std::iter::once(ch.path.as_str()).chain(ch.old.as_deref())))
+        {
+            if !strings.contains_key(s) {
+                strings.insert(s, table.len() as u32);
+                table.push(s);
             }
         }
-
-        drop(insert_commit_stmt);
-        drop(delete_files_stmt);
-        drop(insert_file_stmt);
-
-        tx.commit()?;
-        Ok(())
     }
 
-    pub fn get_missing_commits(&self, all_commit_ids: &[String]) -> Result<Vec<String>> {
-        if all_commit_ids.is_empty() {
-            return Ok(Vec::new());
+    let mut out = Vec::with_capacity(64 + cache.len() * 96);
+    out.extend_from_slice(MAGIC);
+    put_u32(&mut out, table.len() as u32);
+    for s in &table {
+        put_str(&mut out, s);
+    }
+    put_u32(&mut out, cache.len() as u32);
+    for (id, c) in cache {
+        let bytes = id.as_bytes();
+        out.push(bytes.len() as u8);
+        out.extend_from_slice(bytes);
+        out.extend_from_slice(&c.time.to_le_bytes());
+        out.extend_from_slice(&c.tz.to_le_bytes());
+        put_u32(&mut out, strings[c.name.as_str()]);
+        put_u32(&mut out, strings[c.email.as_str()]);
+        put_str(&mut out, &c.summary);
+        out.push(c.partial as u8);
+        put_u32(&mut out, c.changes.len() as u32);
+        for ch in &c.changes {
+            let kind = match ch.kind {
+                Kind::Add => 0u8,
+                Kind::Delete => 1,
+                Kind::Modify => 2,
+                Kind::Rename => 3,
+            };
+            out.push(kind | (ch.binary as u8) << 7);
+            put_u32(&mut out, strings[ch.path.as_str()]);
+            put_u32(&mut out, ch.old.as_deref().map_or(u32::MAX, |o| strings[o]));
+            put_u32(&mut out, ch.added);
+            put_u32(&mut out, ch.deleted);
         }
-        let placeholders = std::iter::repeat_n("?", all_commit_ids.len())
-            .collect::<Vec<_>>()
-            .join(",");
-        let query = format!("SELECT id FROM commits WHERE id IN ({placeholders})");
-        let mut stmt = self.conn.prepare(&query)?;
-        let existing: HashSet<String> = stmt
-            .query_map(rusqlite::params_from_iter(all_commit_ids.iter()), |row| {
-                row.get::<_, String>(0)
-            })?
-            .collect::<rusqlite::Result<HashSet<_>>>()?;
-        Ok(all_commit_ids
-            .iter()
-            .filter(|id| !existing.contains(*id))
-            .cloned()
-            .collect())
     }
+    out
+}
 
-    pub fn get_commit_info(&self, commit_id: &str) -> Result<Option<CommitInfo>> {
-        let result = self.conn.query_row(
-            "SELECT id, author_name, author_email, message, timestamp, parent_ids FROM commits WHERE id = ?",
-            params![commit_id],
-            |row| {
-                let ts: i64 = row.get(4)?;
-                let timestamp = Utc
-                    .timestamp_opt(ts, 0)
-                    .single()
-                    .ok_or_else(|| {
-                        rusqlite::Error::InvalidColumnType(
-                            4,
-                            "timestamp".to_string(),
-                            rusqlite::types::Type::Integer,
-                        )
-                    })?;
+fn decode(b: &[u8]) -> Option<Cache> {
+    let mut r = Reader { b, at: 0 };
+    if r.take(8)? != MAGIC {
+        return None;
+    }
+    let n = r.u32()? as usize;
+    let mut table = Vec::with_capacity(n.min(1 << 20));
+    for _ in 0..n {
+        table.push(r.str()?);
+    }
+    let get = |i: u32| table.get(i as usize).cloned();
+    let n = r.u32()? as usize;
+    let mut cache = Cache::with_capacity(n.min(1 << 22));
+    for _ in 0..n {
+        let len = r.take(1)?[0] as usize;
+        let id = ObjectId::try_from(r.take(len)?).ok()?;
+        let time = i64::from_le_bytes(r.take(8)?.try_into().ok()?);
+        let tz = i32::from_le_bytes(r.take(4)?.try_into().ok()?);
+        let name = get(r.u32()?)?;
+        let email = get(r.u32()?)?;
+        let summary = r.str()?;
+        let partial = r.take(1)?[0] != 0;
+        let m = r.u32()? as usize;
+        let mut changes = Vec::with_capacity(m.min(1 << 16));
+        for _ in 0..m {
+            let k = r.take(1)?[0];
+            let kind = match k & 0x7f {
+                0 => Kind::Add,
+                1 => Kind::Delete,
+                2 => Kind::Modify,
+                3 => Kind::Rename,
+                _ => return None,
+            };
+            let path = get(r.u32()?)?;
+            let old = match r.u32()? {
+                u32::MAX => None,
+                i => Some(get(i)?),
+            };
+            let added = r.u32()?;
+            let deleted = r.u32()?;
+            changes.push(RawChange { kind, path, old, added, deleted, binary: k & 0x80 != 0 });
+        }
+        cache.insert(id, RawCommit { time, tz, name, email, summary, partial, changes });
+    }
+    (r.at == b.len()).then_some(cache)
+}
 
-                let parent_json: String = row.get(5)?;
-                let parent_ids: Vec<String> = serde_json::from_str(&parent_json).map_err(|e| {
-                    rusqlite::Error::FromSqlConversionFailure(
-                        parent_json.len(),
-                        rusqlite::types::Type::Text,
-                        Box::new(e),
-                    )
-                })?;
+fn put_u32(out: &mut Vec<u8>, v: u32) {
+    out.extend_from_slice(&v.to_le_bytes());
+}
 
-                Ok(CommitInfo {
-                    id: row.get(0)?,
-                    author_name: row.get(1)?,
-                    author_email: row.get(2)?,
-                    message: row.get(3)?,
-                    timestamp,
-                    parent_ids,
-                })
+fn put_str(out: &mut Vec<u8>, s: &str) {
+    put_u32(out, s.len() as u32);
+    out.extend_from_slice(s.as_bytes());
+}
+
+struct Reader<'a> {
+    b: &'a [u8],
+    at: usize,
+}
+
+impl<'a> Reader<'a> {
+    fn take(&mut self, n: usize) -> Option<&'a [u8]> {
+        let s = self.b.get(self.at..self.at.checked_add(n)?)?;
+        self.at += n;
+        Some(s)
+    }
+    fn u32(&mut self) -> Option<u32> {
+        Some(u32::from_le_bytes(self.take(4)?.try_into().ok()?))
+    }
+    fn str(&mut self) -> Option<String> {
+        let n = self.u32()? as usize;
+        String::from_utf8(self.take(n)?.to_vec()).ok()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn sample() -> Cache {
+        let mut c = Cache::new();
+        let id = ObjectId::from_hex(b"1234567890abcdef1234567890abcdef12345678").unwrap();
+        c.insert(
+            id,
+            RawCommit {
+                time: 1_700_000_000,
+                tz: -7 * 3600,
+                name: "Ada".into(),
+                email: "ada@example.com".into(),
+                summary: "Fix the thing ✓".into(),
+                partial: false,
+                changes: vec![
+                    RawChange {
+                        kind: Kind::Modify,
+                        path: "src/a.rs".into(),
+                        old: None,
+                        added: 3,
+                        deleted: 1,
+                        binary: false,
+                    },
+                    RawChange {
+                        kind: Kind::Rename,
+                        path: "src/b.rs".into(),
+                        old: Some("src/a.rs".into()),
+                        added: 0,
+                        deleted: 0,
+                        binary: false,
+                    },
+                    RawChange {
+                        kind: Kind::Add,
+                        path: "logo.png".into(),
+                        old: None,
+                        added: 0,
+                        deleted: 0,
+                        binary: true,
+                    },
+                ],
             },
         );
-        match result {
-            Ok(info) => Ok(Some(info)),
-            Err(rusqlite::Error::QueryReturnedNoRows) => Ok(None),
-            Err(e) => Err(e.into()),
+        c
+    }
+
+    #[test]
+    fn round_trip() {
+        let c = sample();
+        assert_eq!(decode(&encode(&c)).unwrap(), c);
+    }
+
+    #[test]
+    fn rejects_damage() {
+        let b = encode(&sample());
+        for cut in [0, 7, 8, 20, b.len() - 1] {
+            assert!(decode(&b[..cut]).is_none(), "cut at {cut}");
         }
+        let mut bad = b.clone();
+        bad[3] ^= 1;
+        assert!(decode(&bad).is_none());
     }
 }

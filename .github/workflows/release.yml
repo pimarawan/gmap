@@ -1,146 +1,65 @@
 name: Release
 
 on:
-  workflow_dispatch:
   push:
-    branches: [ main, master ]
+    tags: ["v*"]
 
 permissions:
   contents: write
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.ver.outputs.version }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-      - id: ver
-        name: Read version from Cargo.toml
-        run: |
-          ver=$(sed -n 's/^version\s*=\s*"\([^"]\+\)"/\1/p' Cargo.toml | head -n1)
-          if [ -z "$ver" ]; then
-            echo "Failed to read version"; exit 1; fi
-          echo "version=$ver" >> $GITHUB_OUTPUT
-
   build:
-    needs: prepare
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            target: linux-x86_64
-          - os: ubuntu-latest
-            target: linux-aarch64
-          - os: macos-latest
-            target: macos
-          - os: windows-latest
-            target: windows-x86_64
+          - { os: ubuntu-latest, target: x86_64-unknown-linux-musl }
+          - { os: ubuntu-24.04-arm, target: aarch64-unknown-linux-musl }
+          - { os: macos-latest, target: aarch64-apple-darwin }
+          - { os: macos-latest, target: x86_64-apple-darwin }
+          - { os: windows-latest, target: x86_64-pc-windows-msvc }
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install Rust
-        uses: actions-rs/toolchain@v1
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: stable
-          override: true
-      - name: Build (release, linux-x86_64)
-        if: matrix.target == 'linux-x86_64'
-        run: cargo build --release --locked
-      - name: Package (linux-x86_64)
-        if: matrix.target == 'linux-x86_64'
+          targets: ${{ matrix.target }}
+      - if: contains(matrix.target, 'musl')
+        run: sudo apt-get update && sudo apt-get install -y musl-tools
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: Package
+        shell: bash
         run: |
-          zip -j gmap-linux-x86_64-${{ needs.prepare.outputs.version }}.zip target/release/gmap LICENSE README.md || true
-      - name: Build (release, linux-aarch64 via cross)
-        if: matrix.target == 'linux-aarch64'
-        uses: taiki-e/install-action@v2
+          name="gmap-${GITHUB_REF_NAME}-${{ matrix.target }}"
+          bin="target/${{ matrix.target }}/release/gmap"
+          [ -f "$bin.exe" ] && bin="$bin.exe"
+          mkdir "$name"
+          cp "$bin" README.md LICENSE "$name/"
+          if [[ "${{ matrix.target }}" == *windows* ]]; then
+            7z a "$name.zip" "$name" > /dev/null
+            file="$name.zip"
+          else
+            tar czf "$name.tar.gz" "$name"
+            file="$name.tar.gz"
+          fi
+          if command -v sha256sum > /dev/null; then sha256sum "$file" > "$file.sha256"; else shasum -a 256 "$file" > "$file.sha256"; fi
+      - uses: actions/upload-artifact@v4
         with:
-          tool: cross
-      - name: Build with cross
-        if: matrix.target == 'linux-aarch64'
-        run: cross build --release --locked --target aarch64-unknown-linux-gnu
-      - name: Package (linux-aarch64)
-        if: matrix.target == 'linux-aarch64'
-        run: |
-          zip -j gmap-linux-aarch64-${{ needs.prepare.outputs.version }}.zip target/aarch64-unknown-linux-gnu/release/gmap LICENSE README.md || true
-      - name: Build (release, macos)
-        if: matrix.target == 'macos'
-        run: cargo build --release --locked
-      - name: Package (macos)
-        if: matrix.target == 'macos'
-        run: |
-          zip -j gmap-macos-${{ needs.prepare.outputs.version }}.zip target/release/gmap LICENSE README.md || true
-      - name: Build (release, windows-x86_64)
-        if: matrix.target == 'windows-x86_64'
-        run: cargo build --release --locked
-      - name: Package (windows)
-        if: matrix.target == 'windows-x86_64'
-        shell: powershell
-        run: |
-          Compress-Archive -Path target/release/gmap.exe, LICENSE, README.md -DestinationPath gmap-windows-x86_64-${{ needs.prepare.outputs.version }}.zip
-      - name: Upload artifact (linux-x86_64)
-        if: matrix.target == 'linux-x86_64'
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-x86_64-zip
-          path: gmap-linux-x86_64-${{ needs.prepare.outputs.version }}.zip
-      - name: Upload artifact (linux-aarch64)
-        if: matrix.target == 'linux-aarch64'
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-aarch64-zip
-          path: gmap-linux-aarch64-${{ needs.prepare.outputs.version }}.zip
-      - name: Upload artifact (macos)
-        if: matrix.target == 'macos'
-        uses: actions/upload-artifact@v4
-        with:
-          name: macos-zip
-          path: gmap-macos-${{ needs.prepare.outputs.version }}.zip
-      - name: Upload artifact (windows)
-        if: matrix.target == 'windows-x86_64'
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-x86_64-zip
-          path: gmap-windows-x86_64-${{ needs.prepare.outputs.version }}.zip
+          name: ${{ matrix.target }}
+          path: gmap-*
 
   release:
-    needs: [prepare, build]
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download linux-x86_64 artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: linux-x86_64-zip
           path: dist
-      - name: Download linux-aarch64 artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: linux-aarch64-zip
-          path: dist
-      - name: Download macos artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: macos-zip
-          path: dist
-      - name: Download windows artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: windows-x86_64-zip
-          path: dist
-      - name: Create GitHub Release and upload assets
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ needs.prepare.outputs.version }}
-          name: gmap v${{ needs.prepare.outputs.version }}
-          files: |
-            dist/gmap-linux-x86_64-${{ needs.prepare.outputs.version }}.zip
-            dist/gmap-linux-aarch64-${{ needs.prepare.outputs.version }}.zip
-            dist/gmap-macos-${{ needs.prepare.outputs.version }}.zip
-            dist/gmap-windows-x86_64-${{ needs.prepare.outputs.version }}.zip
+          merge-multiple: true
+      - name: Publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ver="${GITHUB_REF_NAME#v}"
+          awk -v ver="$ver" '/^## /{ if (on) exit; on = ($2 == ver); next } on' CHANGELOG.md > notes.md
+          gh release create "$GITHUB_REF_NAME" dist/* --title "gmap $ver" --notes-file notes.md

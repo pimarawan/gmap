@@ -1,0 +1,408 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1196.0 848.0" width="1196" height="848">
+<rect width="100%" height="100%" rx="6" fill="#16161c"/>
+<g transform="translate(10 10)" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,'Cascadia Mono',monospace" font-size="14">
+<rect x="0.0" y="0.0" width="50.4" height="18.0" fill="#ffaa3c"/>
+<text x="0.0" y="13.5" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#141418" font-weight="bold" xml:space="preserve"> gmap </text>
+<text x="58.8" y="13.5" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" font-weight="bold" xml:space="preserve">tokio</text>
+<text x="109.2" y="13.5" textLength="462.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">master  4,668 commits · 1,103 people · 817 source files</text>
+<text x="1033.2" y="13.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">all time</text>
+<text x="1100.4" y="13.5" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">  ? help </text>
+<text x="8.4" y="31.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">1</text>
+<text x="25.2" y="31.5" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Map</text>
+<text x="75.6" y="31.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">2</text>
+<text x="92.4" y="31.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" font-weight="bold" xml:space="preserve">Hotspots</text>
+<text x="184.8" y="31.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">3</text>
+<text x="201.6" y="31.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Coupling</text>
+<text x="294.0" y="31.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">4</text>
+<text x="310.8" y="31.5" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">People</text>
+<text x="386.4" y="31.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">5</text>
+<text x="403.2" y="31.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Activity</text>
+<text x="0.0" y="67.5" textLength="604.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    #  score     changes  last 12 months   lines  owner             file</text>
+<text x="789.6" y="67.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="67.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/runtime/</text>
+<text x="789.6" y="85.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="85.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" font-weight="bold" xml:space="preserve">builder.rs</text>
+<rect x="0.0" y="90.0" width="772.8" height="18.0" fill="#2c2e3c"/>
+<text x="0.0" y="103.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    1  </text>
+<text x="58.8" y="103.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#f7df59" xml:space="preserve">████████</text>
+<text x="126.0" y="103.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     132  </text>
+<text x="210.0" y="103.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃▅▃▅█▃ ▃▅█▅▅  </text>
+<text x="327.6" y="103.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    2.3k  Carl Lerche       </text>
+<text x="562.8" y="103.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…o/src/runtime/</text>
+<text x="688.8" y="103.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" font-weight="bold" xml:space="preserve">builder.rs</text>
+<text x="789.6" y="103.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="798.0" y="103.5" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve"> 2,274</text>
+<text x="848.4" y="103.5" textLength="168.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> lines   complexity </text>
+<text x="1016.4" y="103.5" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">3,362              </text>
+<text x="0.0" y="121.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    2  </text>
+<text x="58.8" y="121.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#f8c733" xml:space="preserve">███████▌</text>
+<text x="126.0" y="121.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     143  </text>
+<text x="210.0" y="121.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃ ▅ █▅ ▃▃▆▆█  </text>
+<text x="327.6" y="121.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.5k  Carl Lerche       </text>
+<text x="562.8" y="121.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…r/multi_thread/</text>
+<text x="697.2" y="121.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">worker.rs  </text>
+<text x="789.6" y="121.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="798.0" y="121.5" textLength="33.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve"> 132</text>
+<text x="831.6" y="121.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> changes   </text>
+<text x="924.0" y="121.5" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#5ac878" xml:space="preserve">+3.5k</text>
+<text x="974.4" y="121.5" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#eb6464" xml:space="preserve">-1.2k</text>
+<text x="0.0" y="139.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    3  </text>
+<text x="58.8" y="139.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#f47e17" xml:space="preserve">█████▉  </text>
+<text x="126.0" y="139.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     182  </text>
+<text x="210.0" y="139.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅█  ▃  ▅▃▆▃▆  </text>
+<text x="327.6" y="139.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     932  Carl Lerche       </text>
+<text x="562.8" y="139.5" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…er/current_thread/</text>
+<text x="722.4" y="139.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs  </text>
+<text x="789.6" y="139.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="139.5" textLength="294.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">first 2019-11-01   last 4 weeks ago</text>
+<text x="0.0" y="157.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    4  </text>
+<text x="58.8" y="157.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#e35c31" xml:space="preserve">█████   </text>
+<text x="126.0" y="157.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     188  </text>
+<text x="210.0" y="157.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▂▃▂ ▆▂▂▂ ▂█▃  </text>
+<text x="327.6" y="157.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     677  Carl Lerche       </text>
+<text x="562.8" y="157.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/runtime/</text>
+<text x="714.0" y="157.5" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs   </text>
+<text x="789.6" y="157.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="157.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">created by </text>
+<text x="898.8" y="157.5" textLength="277.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">Carl Lerche                      </text>
+<text x="0.0" y="175.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    5  </text>
+<text x="58.8" y="175.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dd513a" xml:space="preserve">████▊   </text>
+<text x="126.0" y="175.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      68  </text>
+<text x="210.0" y="175.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▂    ▂▂ ▄▂█▅  </text>
+<text x="327.6" y="175.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.2k  Carl Lerche       </text>
+<text x="562.8" y="175.5" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/fs/</text>
+<text x="672.0" y="175.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">file.rs       </text>
+<text x="789.6" y="175.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="193.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    6  </text>
+<text x="58.8" y="193.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#d74d3e" xml:space="preserve">████▌   </text>
+<text x="126.0" y="193.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      81  </text>
+<text x="210.0" y="193.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃    ▃▃█ ▆▆   </text>
+<text x="327.6" y="193.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.8k  Carl Lerche       </text>
+<text x="562.8" y="193.5" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…io/src/sync/</text>
+<text x="672.0" y="193.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">broadcast.rs  </text>
+<text x="789.6" y="193.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="193.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">changes over time</text>
+<text x="0.0" y="211.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    7  </text>
+<text x="58.8" y="211.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#d04744" xml:space="preserve">████▎   </text>
+<text x="126.0" y="211.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      79  </text>
+<text x="210.0" y="211.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">   ▅ ▄  ▂▅█▂  </text>
+<text x="327.6" y="211.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     790  Carl Lerche       </text>
+<text x="562.8" y="211.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…runtime/blocking/</text>
+<text x="714.0" y="211.5" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">pool.rs  </text>
+<text x="789.6" y="211.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="211.5" textLength="361.2" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">█▃▂▂▁█▂▂▁ ▁▁   ▂▅▆▄▁ ▂▂▂▂▂▁▃▂▁▃▂▂▃▁▂▂▂▂▃▁▄▂</text>
+<text x="0.0" y="229.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    8  </text>
+<text x="58.8" y="229.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#c94249" xml:space="preserve">████▏   </text>
+<text x="126.0" y="229.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      97  </text>
+<text x="210.0" y="229.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅█  ▅  ▅█▅▅   </text>
+<text x="327.6" y="229.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.3k  Eliza Weisman     </text>
+<text x="562.8" y="229.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/task/</text>
+<text x="688.8" y="229.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">local.rs    </text>
+<text x="789.6" y="229.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="229.5" textLength="361.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">2019-11                             2026-11</text>
+<text x="0.0" y="247.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">    9  </text>
+<text x="58.8" y="247.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#be3853" xml:space="preserve">███▊    </text>
+<text x="126.0" y="247.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     236  </text>
+<text x="210.0" y="247.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃▃ ▅▃ ▃▅ ▅█▃  </text>
+<text x="327.6" y="247.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     754  Carl Lerche       </text>
+<text x="562.8" y="247.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/</text>
+<text x="646.8" y="247.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">lib.rs           </text>
+<text x="789.6" y="247.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="265.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   10  </text>
+<text x="58.8" y="265.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#b83556" xml:space="preserve">███▋    </text>
+<text x="126.0" y="265.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      58  </text>
+<text x="210.0" y="265.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▂   ▂ ▂▂  █▃  </text>
+<text x="327.6" y="265.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     852  Eliza Weisman     </text>
+<text x="562.8" y="265.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…/sync/</text>
+<text x="621.6" y="265.5" textLength="168.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">batch_semaphore.rs  </text>
+<text x="789.6" y="265.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="265.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">who knows it</text>
+<text x="0.0" y="283.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   11  </text>
+<text x="58.8" y="283.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#b63457" xml:space="preserve">███▌    </text>
+<text x="126.0" y="283.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     219  </text>
+<text x="210.0" y="283.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅█  ▅ ▅▅  █   </text>
+<text x="327.6" y="283.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.6k  </text>
+<text x="411.6" y="283.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Alex Crichton†  </text>
+<text x="562.8" y="283.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…io/src/net/tcp/</text>
+<text x="697.2" y="283.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">stream.rs  </text>
+<text x="789.6" y="283.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="798.0" y="283.5" textLength="378.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve"> Carl Lerche                                 </text>
+<text x="0.0" y="301.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   12  </text>
+<text x="58.8" y="301.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#ae315a" xml:space="preserve">███▍    </text>
+<text x="126.0" y="301.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     111  </text>
+<text x="210.0" y="301.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve"> ▅  █▅▅▅▅ ▅   </text>
+<text x="327.6" y="301.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    2.4k  Carl Lerche       </text>
+<text x="562.8" y="301.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/net/</text>
+<text x="680.4" y="301.5" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">udp.rs       </text>
+<text x="789.6" y="301.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="319.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   13  </text>
+<text x="58.8" y="319.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#aa305c" xml:space="preserve">███▎    </text>
+<text x="126.0" y="319.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      66  </text>
+<text x="210.0" y="319.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅█  ▅▅▅█ ██   </text>
+<text x="327.6" y="319.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     678  Alice Ryhl        </text>
+<text x="562.8" y="319.5" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…/src/runtime/task/</text>
+<text x="722.4" y="319.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs  </text>
+<text x="789.6" y="319.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="319.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">commits by person</text>
+<text x="0.0" y="337.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   14  </text>
+<text x="58.8" y="337.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#a72e5e" xml:space="preserve">███▏    </text>
+<text x="126.0" y="337.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     121  </text>
+<text x="210.0" y="337.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">█████  █  █   </text>
+<text x="327.6" y="337.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     747  Carl Lerche       </text>
+<text x="562.8" y="337.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…io/src/runtime/</text>
+<text x="697.2" y="337.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">handle.rs  </text>
+<text x="789.6" y="337.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="337.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">████████</text>
+<text x="873.6" y="337.5" textLength="302.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">   38  Carl Lerche                  </text>
+<text x="0.0" y="355.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   15  </text>
+<text x="58.8" y="355.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#a62e5e" xml:space="preserve">███▏    </text>
+<text x="126.0" y="355.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     142  </text>
+<text x="210.0" y="355.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅     ▅   ▅█  </text>
+<text x="327.6" y="355.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.9k  </text>
+<text x="411.6" y="355.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Ivan Petkov†    </text>
+<text x="562.8" y="355.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/process/</text>
+<text x="714.0" y="355.5" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs   </text>
+<text x="789.6" y="355.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="355.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">██▏     </text>
+<text x="873.6" y="355.5" textLength="302.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">   10  Alice Ryhl                   </text>
+<text x="0.0" y="373.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   16  </text>
+<text x="58.8" y="373.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#a12c61" xml:space="preserve">███     </text>
+<text x="126.0" y="373.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      51  </text>
+<text x="210.0" y="373.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">█▆  ▃ ▃▃   ▃  </text>
+<text x="327.6" y="373.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.1k  Carl Lerche       </text>
+<text x="562.8" y="373.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…io/src/net/tcp/</text>
+<text x="697.2" y="373.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">socket.rs  </text>
+<text x="789.6" y="373.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="373.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">█▌      </text>
+<text x="873.6" y="373.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    7  </text>
+<text x="932.4" y="373.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Lucio Franco</text>
+<text x="0.0" y="391.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   17  </text>
+<text x="58.8" y="391.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#992964" xml:space="preserve">██▉     </text>
+<text x="126.0" y="391.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      46  </text>
+<text x="210.0" y="391.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃      ▃▃▃▆█  </text>
+<text x="327.6" y="391.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     698  Carl Lerche       </text>
+<text x="562.8" y="391.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…ntime/io/</text>
+<text x="646.8" y="391.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">scheduled_io.rs  </text>
+<text x="789.6" y="391.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="391.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">█       </text>
+<text x="873.6" y="391.5" textLength="302.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    5  Russell Cohen                </text>
+<text x="0.0" y="409.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   18  </text>
+<text x="58.8" y="409.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#992864" xml:space="preserve">██▉     </text>
+<text x="126.0" y="409.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      43  </text>
+<text x="210.0" y="409.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve"> █     ███ █  </text>
+<text x="327.6" y="409.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.3k  Carl Lerche       </text>
+<text x="562.8" y="409.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…ntime/metrics/</text>
+<text x="688.8" y="409.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">runtime.rs  </text>
+<text x="789.6" y="409.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="409.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▉       </text>
+<text x="873.6" y="409.5" textLength="302.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    4  Motoyuki Kimura              </text>
+<text x="0.0" y="427.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   19  </text>
+<text x="58.8" y="427.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#962765" xml:space="preserve">██▊     </text>
+<text x="126.0" y="427.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      55  </text>
+<text x="210.0" y="427.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅   ▅ ▅▅ █▅   </text>
+<text x="327.6" y="427.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.4k  Carl Lerche       </text>
+<text x="562.8" y="427.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/sync/</text>
+<text x="688.8" y="427.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">notify.rs   </text>
+<text x="789.6" y="427.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="445.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   20  </text>
+<text x="58.8" y="445.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#962766" xml:space="preserve">██▊     </text>
+<text x="126.0" y="445.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      79  </text>
+<text x="210.0" y="445.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅▅ ▅▅ ██  ▅   </text>
+<text x="327.6" y="445.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.6k  Carl Lerche       </text>
+<text x="562.8" y="445.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/sync/</text>
+<text x="688.8" y="445.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">oneshot.rs  </text>
+<text x="789.6" y="445.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="445.5" textLength="176.4" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">changes together with</text>
+<text x="0.0" y="463.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   21  </text>
+<text x="58.8" y="463.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#952766" xml:space="preserve">██▊     </text>
+<text x="126.0" y="463.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      79  </text>
+<text x="210.0" y="463.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃▃    ▆▃ ▃█▃  </text>
+<text x="327.6" y="463.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     462  Carl Lerche       </text>
+<text x="562.8" y="463.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/time/</text>
+<text x="688.8" y="463.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">sleep.rs    </text>
+<text x="789.6" y="463.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="463.5" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#7a1d6b" xml:space="preserve"> 26%  </text>
+<text x="856.8" y="463.5" textLength="319.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs                                </text>
+<text x="0.0" y="481.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   22  </text>
+<text x="58.8" y="481.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#932667" xml:space="preserve">██▋     </text>
+<text x="126.0" y="481.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      17  </text>
+<text x="210.0" y="481.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve"> ▃▆ ▃▃    ▃█  </text>
+<text x="327.6" y="481.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     366  Motoyuki Kimura   </text>
+<text x="562.8" y="481.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…ntime/io/driver/</text>
+<text x="705.6" y="481.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">uring.rs  </text>
+<text x="789.6" y="481.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="481.5" textLength="50.4" lengthAdjust="spacingAndGlyphs" fill="#791d6b" xml:space="preserve"> 25%  </text>
+<text x="856.8" y="481.5" textLength="319.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">scheduler/multi_thread/worker.rs      </text>
+<text x="0.0" y="499.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   23  </text>
+<text x="58.8" y="499.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#922667" xml:space="preserve">██▋     </text>
+<text x="126.0" y="499.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      82  </text>
+<text x="210.0" y="499.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">    ▅▅ █ █    </text>
+<text x="327.6" y="499.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     782  Carl Lerche       </text>
+<text x="562.8" y="499.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/macros/</text>
+<text x="705.6" y="499.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">cfg.rs    </text>
+<text x="789.6" y="499.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="517.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   24  </text>
+<text x="58.8" y="517.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8f2568" xml:space="preserve">██▋     </text>
+<text x="126.0" y="517.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      37  </text>
+<text x="210.0" y="517.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▆    ▆ ▃▃▆█   </text>
+<text x="327.6" y="517.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     516  Carl Lerche       </text>
+<text x="562.8" y="517.5" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…untime/time/wheel/</text>
+<text x="722.4" y="517.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs  </text>
+<text x="789.6" y="517.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="517.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#ffaa3c" xml:space="preserve">latest changes</text>
+<text x="0.0" y="535.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   25  </text>
+<text x="58.8" y="535.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8f2568" xml:space="preserve">██▋     </text>
+<text x="126.0" y="535.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      64  </text>
+<text x="210.0" y="535.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">    ▅█ ▅▅▅▅▅  </text>
+<text x="327.6" y="535.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.8k  Carl Lerche       </text>
+<text x="562.8" y="535.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/tests/</text>
+<text x="663.6" y="535.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">sync_mpsc.rs   </text>
+<text x="789.6" y="535.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="535.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">2026-10-11  Falk  </text>
+<text x="957.6" y="535.5" textLength="218.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">runtime: link `available… </text>
+<text x="0.0" y="553.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   26  </text>
+<text x="58.8" y="553.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8b2368" xml:space="preserve">██▌     </text>
+<text x="126.0" y="553.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      93  </text>
+<text x="210.0" y="553.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve"> █   █ ██ █   </text>
+<text x="327.6" y="553.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    2.0k  Carl Lerche       </text>
+<text x="562.8" y="553.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…src/sync/mpsc/</text>
+<text x="688.8" y="553.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">bounded.rs  </text>
+<text x="789.6" y="553.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="553.5" textLength="184.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">2026-10-09  soreavis  </text>
+<text x="991.2" y="553.5" textLength="184.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">docs: fix stray brac… </text>
+<text x="0.0" y="571.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   27  </text>
+<text x="58.8" y="571.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#8a2369" xml:space="preserve">██▌     </text>
+<text x="126.0" y="571.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      82  </text>
+<text x="210.0" y="571.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃     ▆   █   </text>
+<text x="327.6" y="571.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.1k  Carl Lerche       </text>
+<text x="562.8" y="571.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…o/src/net/unix/</text>
+<text x="697.2" y="571.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">stream.rs  </text>
+<text x="789.6" y="571.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="571.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">2026-09-14  Minh  </text>
+<text x="957.6" y="571.5" textLength="218.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">rt: panic when `max_io_e… </text>
+<text x="0.0" y="589.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   28  </text>
+<text x="58.8" y="589.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#892269" xml:space="preserve">██▍     </text>
+<text x="126.0" y="589.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      66  </text>
+<text x="210.0" y="589.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">  ▃ ▆█▃ ▃     </text>
+<text x="327.6" y="589.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     954  Carl Lerche       </text>
+<text x="562.8" y="589.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…kio/tests/</text>
+<text x="655.2" y="589.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">rt_threaded.rs  </text>
+<text x="789.6" y="589.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="589.5" textLength="168.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">2026-09-09  Soheil  </text>
+<text x="974.4" y="589.5" textLength="201.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">rt: add `Builder::max_… </text>
+<text x="0.0" y="607.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   29  </text>
+<text x="58.8" y="607.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#892269" xml:space="preserve">██▍     </text>
+<text x="126.0" y="607.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      94  </text>
+<text x="210.0" y="607.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">     █ █  █   </text>
+<text x="327.6" y="607.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.6k  Carl Lerche       </text>
+<text x="562.8" y="607.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/src/sync/</text>
+<text x="688.8" y="607.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">watch.rs    </text>
+<text x="789.6" y="607.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="806.4" y="607.5" textLength="193.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">2026-09-07  Revantark  </text>
+<text x="999.6" y="607.5" textLength="176.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">runtime: fix `spawn… </text>
+<text x="0.0" y="625.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   30  </text>
+<text x="58.8" y="625.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#872269" xml:space="preserve">██▍     </text>
+<text x="126.0" y="625.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      22  </text>
+<text x="210.0" y="625.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">  █     ▃▃▅▅  </text>
+<text x="327.6" y="625.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     407  Carl Lerche       </text>
+<text x="562.8" y="625.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…src/runtime/io/</text>
+<text x="697.2" y="625.5" textLength="92.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">driver.rs  </text>
+<text x="789.6" y="625.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="643.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   31  </text>
+<text x="58.8" y="643.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#862169" xml:space="preserve">██▍     </text>
+<text x="126.0" y="643.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      79  </text>
+<text x="210.0" y="643.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅     ▅▅  █▅  </text>
+<text x="327.6" y="643.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     612  Carl Lerche       </text>
+<text x="562.8" y="643.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…rc/runtime/time/</text>
+<text x="705.6" y="643.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">entry.rs  </text>
+<text x="789.6" y="643.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="661.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   32  </text>
+<text x="58.8" y="661.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#862169" xml:space="preserve">██▍     </text>
+<text x="126.0" y="661.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      35  </text>
+<text x="210.0" y="661.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅▅▅    ▅█ ▅   </text>
+<text x="327.6" y="661.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     593  Carl Lerche       </text>
+<text x="562.8" y="661.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…o/src/runtime/</text>
+<text x="688.8" y="661.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">runtime.rs  </text>
+<text x="789.6" y="661.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="679.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   33  </text>
+<text x="58.8" y="679.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#862169" xml:space="preserve">██▍     </text>
+<text x="126.0" y="679.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      71  </text>
+<text x="210.0" y="679.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">      ██  ▅   </text>
+<text x="327.6" y="679.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.4k  Carl Lerche       </text>
+<text x="562.8" y="679.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/tests/</text>
+<text x="663.6" y="679.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">rt_common.rs   </text>
+<text x="789.6" y="679.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="697.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   34  </text>
+<text x="58.8" y="697.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#862169" xml:space="preserve">██▍     </text>
+<text x="126.0" y="697.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      68  </text>
+<text x="210.0" y="697.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">    ▅█ ▅▅▅█   </text>
+<text x="327.6" y="697.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     226  Carl Lerche       </text>
+<text x="562.8" y="697.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…o/src/runtime/</text>
+<text x="688.8" y="697.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">context.rs  </text>
+<text x="789.6" y="697.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="715.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   35  </text>
+<text x="58.8" y="715.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#852169" xml:space="preserve">██▍     </text>
+<text x="126.0" y="715.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      42  </text>
+<text x="210.0" y="715.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">█   ▅ ▅ ▅▅▅   </text>
+<text x="327.6" y="715.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     320  Carl Lerche       </text>
+<text x="562.8" y="715.5" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…runtime/scheduler/</text>
+<text x="722.4" y="715.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs  </text>
+<text x="789.6" y="715.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="733.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   36  </text>
+<text x="58.8" y="733.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82206a" xml:space="preserve">██▎     </text>
+<text x="126.0" y="733.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      64  </text>
+<text x="210.0" y="733.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">    ▅▅▅▅  █   </text>
+<text x="327.6" y="733.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     647  Carl Lerche       </text>
+<text x="562.8" y="733.5" textLength="151.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…io/src/sync/mpsc/</text>
+<text x="714.0" y="733.5" textLength="75.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">chan.rs  </text>
+<text x="789.6" y="733.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="751.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   37  </text>
+<text x="58.8" y="751.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82206a" xml:space="preserve">██▎     </text>
+<text x="126.0" y="751.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      27  </text>
+<text x="210.0" y="751.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▃    ▆▃ ▃▃█   </text>
+<text x="327.6" y="751.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     463  </text>
+<text x="411.6" y="751.5" textLength="134.4" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">Jack Wrenn†     </text>
+<text x="562.8" y="751.5" textLength="159.6" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…untime/task/trace/</text>
+<text x="722.4" y="751.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">mod.rs  </text>
+<text x="789.6" y="751.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="769.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   38  </text>
+<text x="58.8" y="769.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82206a" xml:space="preserve">██▎     </text>
+<text x="126.0" y="769.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      24  </text>
+<text x="210.0" y="769.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">▅▅  ▅▅█ █▅▅▅  </text>
+<text x="327.6" y="769.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     492  Carl Lerche       </text>
+<text x="562.8" y="769.5" textLength="100.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio/tests/</text>
+<text x="663.6" y="769.5" textLength="126.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">tcp_stream.rs  </text>
+<text x="789.6" y="769.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="787.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   39  </text>
+<text x="58.8" y="787.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#801f6a" xml:space="preserve">██▏     </text>
+<text x="126.0" y="787.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      50  </text>
+<text x="210.0" y="787.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">  █ █   █     </text>
+<text x="327.6" y="787.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">     781  Carl Lerche       </text>
+<text x="562.8" y="787.5" textLength="142.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">tokio-macros/src/</text>
+<text x="705.6" y="787.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">entry.rs  </text>
+<text x="789.6" y="787.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="805.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">   40  </text>
+<text x="58.8" y="805.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#801f6a" xml:space="preserve">██▏     </text>
+<text x="126.0" y="805.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">      19  </text>
+<text x="210.0" y="805.5" textLength="117.6" lengthAdjust="spacingAndGlyphs" fill="#78aaff" xml:space="preserve">   ▅█▅ ▅ ▅ ▅  </text>
+<text x="327.6" y="805.5" textLength="235.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">    1.0k  Russell Cohen     </text>
+<text x="562.8" y="805.5" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">…s/</text>
+<text x="588.0" y="805.5" textLength="201.6" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">rt_unstable_metrics.rs  </text>
+<text x="789.6" y="805.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#464650" xml:space="preserve">│</text>
+<text x="0.0" y="823.5" textLength="25.2" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve"> ↑↓</text>
+<text x="25.2" y="823.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> move   </text>
+<text x="92.4" y="823.5" textLength="42.0" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">enter</text>
+<text x="134.4" y="823.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> on map   </text>
+<text x="218.4" y="823.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">/</text>
+<text x="226.8" y="823.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> filter   </text>
+<text x="310.8" y="823.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">w</text>
+<text x="319.2" y="823.5" textLength="84.0" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> window   </text>
+<text x="403.2" y="823.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">a</text>
+<text x="411.6" y="823.5" textLength="109.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> all files   </text>
+<text x="520.8" y="823.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">e</text>
+<text x="529.2" y="823.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> edit   </text>
+<text x="596.4" y="823.5" textLength="8.4" lengthAdjust="spacingAndGlyphs" fill="#dcdce1" xml:space="preserve">y</text>
+<text x="604.8" y="823.5" textLength="67.2" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve"> copy   </text>
+<text x="1117.2" y="823.5" textLength="58.8" lengthAdjust="spacingAndGlyphs" fill="#82828e" xml:space="preserve">q quit </text>
+</g>
+</svg>

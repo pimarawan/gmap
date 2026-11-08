@@ -1,17 +1,3 @@
 /target/
-
 /pkg/
 /*.pkg.tar.zst
-/*.pkg.tar.zst.sig
-/*.tar.gz
-
-/gmap-linux-*.zip
-/gmap-windows-*.zip
-
-/release-assets/
-
-*.swp
-*.lock
-.DS_Store
-
-/.gmap
