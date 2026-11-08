@@ -130,7 +130,7 @@ pub fn load(dir: &Path, opt: &LoadOptions) -> Result<History> {
             repo.object_cache_size_if_unset(32 << 20);
             let mut d = Differ::new(repo)?;
             let m = &missing;
-            Ok(move |i: usize| d.commit(m[i]))
+            Ok(move |i: usize| d.commit(m[i]).with_context(|| format!("could not read commit {}", m[i])))
         })?;
         for (i, c) in results.into_iter().enumerate() {
             cache.insert(missing[i], c);
